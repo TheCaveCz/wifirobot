@@ -32,6 +32,7 @@
 #define BLYNK_JOYSTICK_PIN V0
 #define BLYNK_LIGHT_PIN V1
 #define BLYNK_BATTERY_PIN V2
+#define BLYNK_RGB_PIN V3
 
 #define PIN_M1_A D7
 #define PIN_M1_B D0
@@ -45,6 +46,8 @@
 
 #define TIMEOUT_INTERVAL 20000UL
 #define RECONNECT_INTERVAL 60000UL
+
+#define UDP_PORT 44432
 
 String chipId = String(ESP.getChipId(),HEX);
 

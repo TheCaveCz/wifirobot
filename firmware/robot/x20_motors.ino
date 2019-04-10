@@ -1,8 +1,8 @@
 #define MOTORS_ACCEL_PER_TICK 40
 #define MOTORS_TICK 20UL
 
-#define MOTORS_MAX 1023
-#define MOTORS_MIDDLE 511
+#define MOTORS_MAX 255
+#define MOTORS_MIDDLE 127
 
 int16_t m1speed;
 int16_t m2speed;

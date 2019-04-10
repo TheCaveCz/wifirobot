@@ -1,3 +1,7 @@
+uint8_t logicR;
+uint8_t logicG;
+uint8_t logicB;
+uint8_t logicOn;
 
 void logicStop() {
   logicSetSpeed(MOTORS_MIDDLE, MOTORS_MIDDLE);
@@ -20,4 +24,36 @@ void logicSetSpeed(const int sx, const int sy) {
 
   m1targetSpeed = m1;
   m2targetSpeed = m2;
+}
+
+void logicSetLight(const uint8_t r, const uint8_t g, const uint8_t b) {
+  logValue("Set R: ", r);
+  logValue("Set G: ", g);
+  logValue("Set B: ", b);
+  logicR = r;
+  logicG = g;
+  logicB = b;
+  logicUpdateLight();
+}
+
+void logicSetLightOn(const uint8_t on) {
+  logicOn = on ? 1 : 0;
+  logValue("Set light on: ", logicOn);
+  logicUpdateLight();
+}
+
+void logicUpdateLight() {
+  if (logicOn) {
+    pixelsSet(logicR, logicG, logicB);
+  } else {
+    pixelsSet(0, 0, 0);
+  }
+}
+
+void logicSetup() {
+  logicR = 128;
+  logicG = 128;
+  logicB = 128;
+  logicOn = 1;
+  logicUpdateLight();
 }

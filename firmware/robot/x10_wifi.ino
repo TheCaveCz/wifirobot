@@ -2,9 +2,7 @@
 #define MASTER_RESET_DELAY 20
 #define MASTER_RESET_COUNTER 200
 
-WiFiEventHandler wifiIpHandler;
 bool wifiShouldSaveConfig;
-bool wifiGotIpFlag;
 
 void wifiResetAndRestart() {
   logInfo("WiFi reset in progress");
@@ -41,28 +39,42 @@ void wifiStartAp() {
   }
 }
 
+void wifiBail() {
+  logInfo("Unable to connect");
+  logValue("WiFi status: ", WiFi.status());
+  pixelsSetAnimState(PIXELS_ANIM_RED);
+  while (1) {
+    adcTick(); // keep here to detect reset button hold
+    delay(1);
+  }
+  // this function is not supposed to exit
+}
+
 void wifiSetup() {
   if (WiFi.getAutoConnect()) WiFi.setAutoConnect(false);
   if (WiFi.getMode() != WIFI_STA) WiFi.mode(WIFI_STA);
-
-  logInfo("Connecting to WiFi...");
-  pixelsSetAnimState(PIXELS_ANIM_BLUE);
-  wifiGotIpFlag = false;
-
-  wifiIpHandler = WiFi.onStationModeGotIP([](const WiFiEventStationModeGotIP & evt) {
-    // this executes when module reconnects and gets IP from DHCP
-    // can be called multiple times
-    wifiGotIpFlag = true;
-    logInfo("WiFi connected successfuly");
-    logValue("Got IP: ", evt.ip);
-  });
 
   if (WiFi.SSID() == "") {
     logInfo("No saved credentials");
     pixelsSetAnimState(PIXELS_ANIM_VIOLET);
     wifiStartAp();
-  } else if (!WiFi.isConnected()) {
-    logValue("Stored SSID: ", WiFi.SSID());
-    WiFi.begin();
+    return;
   }
+
+  logInfo("Connecting to WiFi...");
+  logValue("Stored SSID: ", WiFi.SSID());
+  pixelsSetAnimState(PIXELS_ANIM_BLUE);
+
+  WiFi.begin();
+  uint8_t connectCounter = 0;
+  while (!WiFi.isConnected()) {
+    connectCounter++;
+    if (connectCounter > 150) {
+      wifiBail();
+    }
+    delay(200);
+  }
+
+  logInfo("WiFi connected successfuly");
+  logValue("Got IP: ", WiFi.localIP());
 }

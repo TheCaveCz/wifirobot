@@ -1,15 +1,13 @@
 
-bool blynkFirstConnect;
 uint32_t blynkConnectionCheckTime;
 
 
 BLYNK_CONNECTED() {
   logInfo("Blynk connected");
 
-  timeoutClear();
   Blynk.syncAll();
   pixelsSetAnimState(PIXELS_ANIM_NORMAL);
-  pixelsSet(32, 32, 32);
+  pixelsSet(0, 0, 0);
 }
 
 BLYNK_DISCONNECTED() {
@@ -23,11 +21,11 @@ BLYNK_WRITE(BLYNK_JOYSTICK_PIN) {
 }
 
 BLYNK_WRITE(BLYNK_LIGHT_PIN) {
-  if (param.asInt()) {
-    pixelsSet(128, 128, 128);
-  } else {
-    pixelsSet(1, 1, 1);
-  }
+  logicSetLightOn(param.asInt());
+}
+
+BLYNK_WRITE(BLYNK_RGB_PIN) {
+  logicSetLight(param[0].asInt(), param[1].asInt(), param[2].asInt());
 }
 
 bool blynkIsConfigured() {
@@ -38,20 +36,25 @@ void blynkConnectIfPossible() {
   if (WiFi.isConnected() && !Blynk.connected()) {
     logInfo("Blynk connect attempt");
     pixelsSetAnimState(PIXELS_ANIM_GREEN);
-    timeoutRefresh();
     Blynk.connect();
   }
 }
 
-void blynkCheck() {
-  if (!timeoutIsActive() && blynkConnectionCheckTime && millis() > blynkConnectionCheckTime) {
+void blynkTick() {
+  if (!blynkIsConfigured()) return;
+
+  if (millis() > blynkConnectionCheckTime) {
     logInfo("Blynk connection check");
     blynkConnectionCheckTime = millis() + RECONNECT_INTERVAL;
     blynkConnectIfPossible();
+  }
+
+  if (Blynk.connected()) {
+    Blynk.run();
   }
 }
 
 void blynkSetup() {
   Blynk.config(config.blynkToken);
-  blynkConnectionCheckTime = blynkIsConfigured() ? millis() + RECONNECT_INTERVAL : 0;
+  blynkConnectionCheckTime = 0;
 }
