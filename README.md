@@ -1,5 +1,7 @@
 # WiFi robot
 
+![Wifirobot](pictures/wifirobot%201.jpeg)
+
 ESP8266 chip on Wemos D1 mini module that is driving two DC geared motors using L293D chip. One WS2812 led for status, one tact switch for reset. Possibility of extending functionality via I2C bus.
 Firmware contains Blynk platform integration for mobile app control. Can also be controlled using UDP packets.
 
@@ -40,14 +42,21 @@ More resources:
 
 ## Blynk project
 
-<img src="pictures/blynk-app.png" width=320>
+Total required energy: 1200
 
-<img src="pictures/blynk-project.png" width=320>
+<img src="pictures/blynk-00-app.png" width=320>
 
-[Check the video of creating the Blynk project](pictures/blynk-setup.mp4)
+### Component settings
 
-<video width="320"><source src="pictures/blynk-setup.mp4" type="video/mp4"></video>
+<img src="pictures/blynk-01-new-project.png" width=320>
 
-## How it looks
+<img src="pictures/blynk-02-joystick.png" width=320>
 
-![Wifirobot](pictures/wifirobot%2029.jpeg)
+<img src="pictures/blynk-03-button.png" width=320>
+
+<img src="pictures/blynk-04-zergba.png" width=320>
+
+<img src="pictures/blynk-05-level.png" width=320>
+
+<img src="pictures/blynk-05-finished.png" width=320>
+
