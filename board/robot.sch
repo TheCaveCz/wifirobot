@@ -31410,10 +31410,10 @@ Facing DOWN/PCB</text>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="E2.5-7" package3d_urn="urn:adsk.eagle:package:23345/1"/>
+<part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="E2.5-7" package3d_urn="urn:adsk.eagle:package:23345/1" value="47uF/16V"/>
 <part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="C2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2"/>
+<part name="C2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2" value="100nF"/>
 <part name="MOTOR" library="Rembrandt Electronics - JST XH Connectors v1-0" deviceset="JST-XH-04-PIN" device="-LONG-PAD" value=""/>
 <part name="D1" library="thecave" deviceset="WS2812B-PTH" device=""/>
 <part name="U2" library="thecave" deviceset="DCDC_5V_STEPUP" device=""/>
@@ -31465,8 +31465,8 @@ Facing DOWN/PCB</text>
 <attribute name="VALUE" x="96.52" y="96.52" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="C1" gate="G$1" x="160.02" y="38.1" smashed="yes">
-<attribute name="NAME" x="161.163" y="38.5826" size="1.778" layer="95"/>
-<attribute name="VALUE" x="161.163" y="33.5026" size="1.778" layer="96"/>
+<attribute name="NAME" x="156.083" y="38.5826" size="1.778" layer="95"/>
+<attribute name="VALUE" x="164.6174" y="31.623" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="P+5" gate="1" x="160.02" y="48.26" smashed="yes">
 <attribute name="VALUE" x="157.48" y="43.18" size="1.778" layer="96" rot="R90"/>
