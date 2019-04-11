@@ -1,4 +1,4 @@
-#define MOTORS_ACCEL_PER_TICK 100
+#define MOTORS_ACCEL_PER_TICK 60
 #define MOTORS_TICK 20UL
 
 #define MOTORS_MAX 255
@@ -15,9 +15,9 @@ uint16_t motorsSpeedToPwm(uint16_t speed) {
   if (speed == MOTORS_MIDDLE) {
     return 0;
   } else if (speed > MOTORS_MIDDLE) {
-    return map(speed, MOTORS_MIDDLE, MOTORS_MAX, PWMRANGE / 2, PWMRANGE);
+    return map(speed, MOTORS_MIDDLE, MOTORS_MAX, PWMRANGE / 1.5, PWMRANGE);
   } else {
-    return map(speed, MOTORS_MIDDLE - 1, 0, PWMRANGE / 2, PWMRANGE);
+    return map(speed, MOTORS_MIDDLE - 1, 0, PWMRANGE / 1.5, PWMRANGE);
   }
 }
 

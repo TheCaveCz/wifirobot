@@ -22,10 +22,6 @@ void logicSetSpeed(const int sx, const int sy) {
     logLine();
   }
 
-  if (Blynk.connected() && (m1targetSpeed != m1 || m2targetSpeed != m2)) {
-    Blynk.virtualWrite(BLYNK_M1_SPEED_PIN, m1);
-    Blynk.virtualWrite(BLYNK_M2_SPEED_PIN, m2);
-  }
   m1targetSpeed = m1;
   m2targetSpeed = m2;
 }
