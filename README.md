@@ -44,7 +44,16 @@ More resources:
 
 Total required energy: 1200
 
-<img src="pictures/blynk-00-app.png" width=320>
+### Components
+
+* Joystick
+* Button
+* zeRGBa
+* Level H
+
+Recommended layout:
+
+<img src="pictures/blynk-06-finished.png" width=320>
 
 ### Component settings
 
@@ -58,5 +67,5 @@ Total required energy: 1200
 
 <img src="pictures/blynk-05-level.png" width=320>
 
-<img src="pictures/blynk-06-finished.png" width=320>
+<img src="pictures/blynk-00-app.png" width=320>
 
