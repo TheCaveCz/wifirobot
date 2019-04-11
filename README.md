@@ -58,5 +58,5 @@ Total required energy: 1200
 
 <img src="pictures/blynk-05-level.png" width=320>
 
-<img src="pictures/blynk-05-finished.png" width=320>
+<img src="pictures/blynk-06-finished.png" width=320>
 
