@@ -34,7 +34,8 @@ void adcTick() {
     adcBattery = bat;
     logValue("Battery: ", adcBattery);
     if (Blynk.connected()) {
-      Blynk.virtualWrite(BLYNK_BATTERY_PIN, adcBattery / 100.0);
+      Blynk.virtualWrite(BLYNK_BATTERY_PERCENT_PIN, map(constrain(adcBattery, 300, 450), 300, 450, 0, 100));
+      Blynk.virtualWrite(BLYNK_BATTERY_VOLTAGE_PIN, adcBattery / 100.0);
     }
   }
 }
