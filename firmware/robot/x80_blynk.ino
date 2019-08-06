@@ -36,6 +36,15 @@ BLYNK_WRITE(BLYNK_M2_SPEED_PIN) {
   m2targetSpeed = constrain(param.asInt(), 0, MOTORS_MAX);
 }
 
+BLYNK_WRITE(BLYNK_BRAKE_PIN) {
+  if (param.asInt()) {
+    m1targetSpeed = MOTORS_MIDDLE;
+    m2targetSpeed = MOTORS_MIDDLE;
+    Blynk.virtualWrite(BLYNK_M1_SPEED_PIN, m1targetSpeed);
+    Blynk.virtualWrite(BLYNK_M2_SPEED_PIN, m2targetSpeed);
+  }
+}
+
 bool blynkIsConfigured() {
   return strlen(config.blynkToken) != 0;
 }
